@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand: deep emerald = privacy/trust. Distinct from iLovePDF red & Smallpdf blue */
+  --color-brand-50: #ecfdf5;
+  --color-brand-100: #d3f8e9;
+  --color-brand-500: #10a37f;
+  --color-brand-600: #0e8a6c;
+  --color-brand-700: #0b6e57;
+  --color-brand-900: #073f33;
+
+  /* Ink & paper */
+  --color-ink: #10231e;
+  --color-ink-soft: #4b5f59;
+  --color-paper: #f7faf9;
+  --color-line: #dfe8e5;
+
+  /* Category tints */
+  --color-cat-pdf: #d6493a;
+  --color-cat-image: #2f6fd6;
+  --color-cat-text: #7c4fd0;
+  --color-cat-arabic: #b8860b;
+
+  --font-sans: "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --radius-card: 1rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+/* Signature: privacy pulse */
+@keyframes privacy-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.privacy-dot {
+  animation: privacy-pulse 2.2s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .privacy-dot { animation: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* Dropzone vault border */
+.vault-border {
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--color-line) 0 8px,
+    transparent 8px 16px
+  );
+}
+
+::selection {
+  background: var(--color-brand-100);
+}
