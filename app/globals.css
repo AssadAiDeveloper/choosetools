@@ -21,8 +21,8 @@
   --color-cat-text: #7c4fd0;
   --color-cat-arabic: #b8860b;
 
-  --font-sans: "IBM Plex Sans Arabic", system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+    --font-sans: var(--font-sans-loaded), "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --font-mono: var(--font-mono-loaded), "IBM Plex Mono", ui-monospace, monospace;
 
   --radius-card: 1rem;
 }

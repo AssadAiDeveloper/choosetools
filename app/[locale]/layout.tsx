@@ -6,23 +6,23 @@ import { routing } from "@/i18n/routing";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SITE_URL } from "@/lib/tools";
-import "../globals.css";
-
 import { IBM_Plex_Sans_Arabic, IBM_Plex_Mono } from "next/font/google";
+import "../globals.css";
 
 const sans = IBM_Plex_Sans_Arabic({
   subsets: ["arabic", "latin"],
   weight: ["300", "400", "500", "600", "700"],
   display: "swap",
-  variable: "--font-sans",
+  variable: "--font-sans-loaded",
 });
 
 const mono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
   display: "swap",
-  variable: "--font-mono",
+  variable: "--font-mono-loaded",
 });
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
@@ -86,8 +86,8 @@ export default async function LocaleLayout({
   };
 
   return (
-    <html lang={locale} dir={dir} className={`${sans.variable} ${mono.variable}`}>      <head>
-        
+    <html lang={locale} dir={dir} className={`${sans.variable} ${mono.variable}`}>
+      <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
