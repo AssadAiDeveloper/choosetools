@@ -8,9 +8,21 @@ import { Footer } from "@/components/Footer";
 import { SITE_URL } from "@/lib/tools";
 import "../globals.css";
 
-const FONTS_URL =
-  "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap";
+import { IBM_Plex_Sans_Arabic, IBM_Plex_Mono } from "next/font/google";
 
+const sans = IBM_Plex_Sans_Arabic({
+  subsets: ["arabic", "latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-sans",
+});
+
+const mono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
+  variable: "--font-mono",
+});
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
@@ -74,11 +86,8 @@ export default async function LocaleLayout({
   };
 
   return (
-    <html lang={locale} dir={dir}>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="stylesheet" href={FONTS_URL} />
+    <html lang={locale} dir={dir} className={`${sans.variable} ${mono.variable}`}>      <head>
+        
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
