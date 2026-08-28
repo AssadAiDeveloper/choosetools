@@ -15,8 +15,10 @@ export async function staticPageMetadata(
 ): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: "pages" });
   const prefix = locale === routing.defaultLocale ? "" : `/${locale}`;
+  const body = t.raw(`${page}.body`) as string[];
   return {
     title: `${t(`${page}.title`)} · ${SITE_NAME}`,
+    description: body[0]?.slice(0, 160),
     alternates: {
       canonical: `${SITE_URL}${prefix}/${page}`,
       languages: Object.fromEntries(
